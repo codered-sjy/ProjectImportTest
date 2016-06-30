@@ -62,7 +62,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mSbValue = (SeekBar) findViewById(R.id.sb_value);
-        mSbValue.setMax(correctMax);
+        try {
+            mSbValue.setMax(correctMax);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+
         mSbValue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
