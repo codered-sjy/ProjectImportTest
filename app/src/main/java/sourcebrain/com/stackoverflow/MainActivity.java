@@ -1,6 +1,7 @@
 package sourcebrain.com.stackoverflow;
 
 import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TimePicker;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +29,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bindElements();
+        opentimepicker();
+    }
+    CustomTimePicker dialog;
+    void opentimepicker() {
+         dialog = new CustomTimePicker(this, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+            }
+
+
+        }, Calendar.getInstance().get(Calendar.HOUR), Calendar.getInstance().get(Calendar.MINUTE), false);
+        dialog.show();
     }
 
     EditText mEtValue;
@@ -36,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         final int SEEKBAR_MAX_SIZE = 1000;
         // 10000 Change to object max value
         int correctMax = SEEKBAR_MAX_SIZE - SEEKBAR_SIZE_CORRECTION;
-
+        int newCorrectMax;
 
         mEtValue = (EditText) findViewById(R.id.et_value);
         mEtValue.setFilters(new InputFilter[] { new InputFilter.LengthFilter(SEEKBAR_MAX_SIZE) });
