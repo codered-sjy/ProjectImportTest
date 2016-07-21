@@ -3,7 +3,10 @@ package sourcebrain.com.stackoverflow;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatDrawableManager;
@@ -14,6 +17,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -29,20 +33,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        opentimepicker();
+        SharedPreferences.Editor editor;
     }
     CustomTimePicker dialog;
-    void opentimepicker() {
-         dialog = new CustomTimePicker(this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-
-            }
-
-
-        }, Calendar.getInstance().get(Calendar.HOUR), Calendar.getInstance().get(Calendar.MINUTE), false);
-        dialog.show();
-    }
 
     EditText mEtValue;
     SeekBar mSbValue;
