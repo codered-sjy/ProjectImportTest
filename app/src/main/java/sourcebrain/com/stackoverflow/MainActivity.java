@@ -28,6 +28,8 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
+    String teststring = "mainactivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
